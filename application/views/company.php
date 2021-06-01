@@ -20,10 +20,16 @@
 				<?php echo form_open('Welcome/companyRegister', 'id="add_class", name="add_class"') ?>
 					<div class="p-3 text-center">
 						
-						<span class="text-white err_area"></span>  <!-- error field -->
+						<!-- error message -->
+						<?php 
+							if($this->session->flashdata('comp_msg')){ ?>
+							<p class="text-white text-left bg-danger p-1"><?php echo $this->session->flashdata('comp_msg')?></p>  
+								
+						<?php	}?>
 
 						<input type="text" class="form-control mb-4 mt-1 sign_in_input" name="name" value="" placeholder="Enter your Comapny Name">
 						<input type="email" class="form-control mb-4 mt-1 sign_in_input" name="email" value="" placeholder="Enter your email">
+						<input type="password" class="form-control mb-4 mt-1 sign_in_input" name="pass" value="" placeholder="Enter your password">
 						<input type="text" class="form-control mb-3  sign_in_input" name="website" value="" placeholder="website">
 						<p class="text-white mb-1 text-left">Comapany Logo (minimum 100×100)</p>
 						<input type="file" class="form-control mb-4 pt-2 sign_in_input" name="logo" value="" placeholder="logo">

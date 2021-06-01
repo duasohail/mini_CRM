@@ -20,7 +20,20 @@
 				<?php echo form_open('Welcome/signIn', 'id="add_class", name="add_class"') ?>
 					<div class="p-3 text-center">
 						
-						<span class="text-white err_area"></span>  <!-- error field -->
+					<!-- error message -->
+						<?php 
+							if($this->session->flashdata('message')){ ?>
+							<p class="text-white text-left bg-danger p-1"><?php echo $this->session->flashdata('message')?></p>  
+								
+						<?php	}elseif($this->session->flashdata('comp_msg_sucess')){?>
+
+							<p class="text-white text-left bg-success p-1"><?php echo $this->session->flashdata('comp_msg_sucess')?></p>  
+
+						<?php } elseif($this->session->flashdata('emp_msg_sucess')){?>
+							
+							<p class="text-white text-left bg-success p-1"><?php echo $this->session->flashdata('emp_msg_sucess')?></p>  
+						<?php } ?>
+						
 
 						<input type="email" class="form-control mb-4 mt-1 sign_in_input" name="email" value="" placeholder="Enter your email">
 						<input type="password" class="form-control mb-4 sign_in_input" name="password" value="" placeholder="Enter your password">
