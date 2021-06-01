@@ -20,6 +20,36 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('sign_in');
 	}
+	public function signIn()
+	{
+		$data=$this->input->post();
+		echo 'welcome admin your email is'.$data['email'];
+	}
+	public function registerCompanyView()
+	{
+		$this->load->view('company');
+	}
+	public function companyRegister()
+	{
+		$data=$this->input->post();
+		echo 'welcome admin your email is '.$data['name'];
+	}
+	
+	public function register()
+	{
+		$data=$this->input->post();
+		echo 'welcome admin your email is'.$data['email'];
+	}
+	public function registerEmpView()
+	{
+		$this->load->view('emp');
+	}
+	public function empRegister()
+	{
+		$data=$this->input->post();
+		echo 'welcome admin your email is'.$data['name'];
+	}
+
 }

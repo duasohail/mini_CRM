@@ -3,11 +3,42 @@
     margin: 0px;
 }
 
+body {
+    background-image: url(../image/background.jpg);
+    background-repeat: no-repeat;
+    background-color: black;
+    background-size: cover;
+}
+
 .main {
     height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .formBorder {
     width: 35%;
-    background-color: aquamarine;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.sign_in_input {
+    border-radius: 0%;
+    height: 45px;
+    padding: 0px 0px 0px 15px;
+}
+
+.sign_in_button {
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    width: 90px;
+    height: 35px;
+}
+
+.reg {
+    font-size: 12px;
+}
+
+.err_area {
+    font-size: 13px;
+    color: white;
 }
