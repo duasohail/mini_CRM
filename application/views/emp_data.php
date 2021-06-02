@@ -20,15 +20,15 @@
 
         <div class="row no-gutters text-center mt-3">
             <div class="col-sm-12 col-12">
-                <button class="btn btn-sm btn-danger"><a class="text-white" href="<?php echo site_url('Welcome/dashboard')?>">Companies</a></button>
+                <button class="btn btn-sm btn-danger"><a class="text-white" href="<?php echo site_url('Welcome/dashboard') ?>">Companies</a></button>
                 <!-- <button class="btn btn-sm btn-danger"onclick="emp()" id='emp'>Employees</button> -->
-                <button class="btn btn-sm btn-danger" >Employees</button>
+                <button class="btn btn-sm btn-danger">Employees</button>
                 <hr class="bg-danger w-75">
             </div>
         </div>
 
         <div class="row no-gutters mt-2 text-center" id='tab'>
-        <div class="col-sm-12 col-12" id="tab1">
+            <div class="col-sm-12 col-12" id="tab1">
                 <table class="table table-dark w-100">
                     <thead>
                         <tr>
@@ -43,42 +43,41 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    $emps=$this->session->userdata('emp');
-                    $companies=$this->session->userdata('companies');
-                    foreach($companies as $company){
-
-                    }
-                    $count=1;
-                    foreach($emps as $key=>$emp ){
-                        // print_r($companies[$key]['name']);
+                        <?php
+                        $emps = $this->session->userdata('emp');
+                        $companies = $this->session->userdata('companies');
+                        foreach ($companies as $company) {
+                        }
+                        $count = 1;
+                        foreach ($emps as $key => $emp) {
+                            // print_r($companies[$key]['name']);
                         ?>
-                   
-                          <tr>
-                            <th scope="row"><?php echo $count++ ; ?></th>
-                            <th scope="row"><?php echo $emp['first_name'];?></th>
-                            <td><?php echo $emp['last_name'];?></td>
-                            <td><?php echo $emp['email'];?></td>
-                            <td><?php echo $emp['phone'];?></td>
-                            <td><?php echo $emp['company_id']; ?></td>
-                            <td> <button class="btn btn-sm btn-danger"><a class="text-white" href="<?php echo site_url('Welcome/editEmpView')?>?id=<?php echo $emp['emp_id']?>">Edit</a></button></td>
-                            <td> <button class="btn btn-sm btn-danger"><a class="text-white" href="<?php echo site_url('Welcome/deleteEmp')?>?id=<?php echo $emp['emp_id']?>&email=<?php echo $emp['email']?>">Delete</a></button></td>
-                        </tr>
 
-                   <?php  }?>
-                       
-                            
+                            <tr>
+                                <th scope="row"><?php echo $count++; ?></th>
+                                <th scope="row"><?php echo $emp['first_name']; ?></th>
+                                <td><?php echo $emp['last_name']; ?></td>
+                                <td><?php echo $emp['email']; ?></td>
+                                <td><?php echo $emp['phone']; ?></td>
+                                <td><?php echo $emp['company_id']; ?></td>
+                                <td> <button class="btn btn-sm btn-danger"><a class="text-white" href="<?php echo site_url('Welcome/editEmpView') ?>?id=<?php echo $emp['emp_id'] ?>">Edit</a></button></td>
+                                <td> <button class="btn btn-sm btn-danger"><a class="text-white" href="<?php echo site_url('Welcome/deleteEmp') ?>?id=<?php echo $emp['emp_id'] ?>&email=<?php echo $emp['email'] ?>">Delete</a></button></td>
+                            </tr>
+
+                        <?php  } ?>
+
+
                     </tbody>
                 </table>
             </div>
-            
+
         </div>
-        
+
 
     </div>
 </body>
 <script>
-    
+
 </script>
 
 
