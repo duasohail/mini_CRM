@@ -60,9 +60,22 @@ class Welcome extends CI_Controller {
 		$logo=$this->input->post('logo');
 		$website=$this->input->post('website');
 		$pass=$this->input->post('pass');
+
 		$this->load->model('Company_Model');
 
 		$data=$this->Company_Model->companyRegisterModel($comp_name, $email, $logo, $website, $pass);
+		
+		//email alert for admin here duak3710@gmmail.com is admin you can change if u want
+		$from_email='test@gmail.com';
+		$to_email='duak3710@gmail.com';
+        $this->load->library('email');
+        $this->email->from($from_email, 'test email');
+        $this->email->to($to_email);
+        $this->email->subject('test email');
+        $this->email->message('test email message');
+        $this->email->send();
+		
+		
 	
 	}
 	public function editCompanyView(){
@@ -112,12 +125,26 @@ class Welcome extends CI_Controller {
 		$pass=$this->input->post('pass');
 		$id=$this->input->post('Company');
 		$phone=$this->input->post('phone');
+
 		// print_r($id);
 		
 		$this->load->model('Emp_Model');
 
 		$data=$this->Emp_Model->empRegisterModel($name, $last_name, $email, $pass , $id, $phone);
+
+		
+		//email alert for admin here duak3710@gmmail.com is admin you can change if u want
+		$from_email='test@gmail.com';
+		$to_email='duak3710@gmail.com';
+        $this->load->library('email');
+        $this->email->from($from_email, 'test email');
+        $this->email->to($to_email);
+        $this->email->subject('test email');
+        $this->email->message('test email message');
+        $this->email->send();
 	}
+
+	
 	public function editEmpView(){
 		$this->load->View('empEdit');
 		
