@@ -20,41 +20,49 @@
 
         <div class="row no-gutters text-center mt-3">
             <div class="col-sm-12 col-12">
-                <button class="btn btn-sm btn-danger" onclick="company()" id='company'>Companies</button>
-                
-                <!-- <button class="btn btn-sm btn-danger" onclick="emp()" id='emp'>Employees</button> -->
-                <button class="btn btn-sm btn-danger"><a class="text-white" href="<?php echo site_url('Welcome/empData'); ?>">Employees</a></button>
+                <button class="btn btn-sm btn-danger"><a class="text-white" href="<?php echo site_url('Welcome/dashboard')?>">Companies</a></button>
+                <!-- <button class="btn btn-sm btn-danger"onclick="emp()" id='emp'>Employees</button> -->
+                <button class="btn btn-sm btn-danger" >Employees</button>
                 <hr class="bg-danger w-75">
             </div>
         </div>
 
         <div class="row no-gutters mt-2 text-center" id='tab'>
-            <div class="col-sm-12 col-12" id="tab1">
+        <div class="col-sm-12 col-12" id="tab1">
                 <table class="table table-dark w-100">
                     <thead>
                         <tr>
                             <th scope="col">s/no</th>
-                            <th scope="col">Company Name</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last name</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Website</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">company id | name</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
-                    $companies=$this->session->userdata('company_all');
-                    // print_r($companies);
+                    $emps=$this->session->userdata('emp');
+                    $companies=$this->session->userdata('companies');
+                    foreach($companies as $company){
+
+                    }
                     $count=1;
-                    foreach( $companies as $company ){?>
-                    
+                    foreach($emps as $key=>$emp ){
+                        // print_r($companies[$key]['name']);
+                        ?>
+                   
                           <tr>
                             <th scope="row"><?php echo $count++ ; ?></th>
-                            <th scope="row"><?php echo $company['name'];?></th>
-                            <td><?php echo $company['email'];?></td>
-                            <td><?php echo $company['website'];?></td>
-                            <td> <button class="btn btn-sm btn-danger"><a class="text-white" href="<?php echo site_url('Welcome/editCompanyView')?>?id=<?php echo $company['company_id']?>">Edit</a></button></td>
-                            <td> <button class="btn btn-sm btn-danger"><a class="text-white" href="<?php echo site_url('Welcome/deleteComp')?>?id=<?php echo $company['company_id']?>&email=<?php echo $company['email']?>">Delete</a></button></td>
+                            <th scope="row"><?php echo $emp['first_name'];?></th>
+                            <td><?php echo $emp['last_name'];?></td>
+                            <td><?php echo $emp['email'];?></td>
+                            <td><?php echo $emp['phone'];?></td>
+                            <td><?php echo $emp['company_id']; ?></td>
+                            <td> <button class="btn btn-sm btn-danger"><a class="text-white" href="<?php echo site_url('Welcome/editEmpView')?>?id=<?php echo $emp['emp_id']?>">Edit</a></button></td>
+                            <td> <button class="btn btn-sm btn-danger"><a class="text-white" href="<?php echo site_url('Welcome/deleteEmp')?>?id=<?php echo $emp['emp_id']?>&email=<?php echo $emp['email']?>">Delete</a></button></td>
                         </tr>
 
                    <?php  }?>
@@ -63,12 +71,15 @@
                     </tbody>
                 </table>
             </div>
-
+            
         </div>
-
+        
 
     </div>
 </body>
+<script>
+    
+</script>
 
 
 <!-- bootstrap scripts links -->

@@ -6,11 +6,15 @@ class Admin_Model extends CI_Model
 {
     public function adminRegisterModel($email, $password)
     {
+        // echo 'hello';
         $data = $this->db->query("SELECT * FROM admin WHERE password='" . $password . "' AND email='" . $email . "'");
+        
         $data2 = $data->result_array();
         foreach ($data2 as $admin) {
             $admin_t = $admin['admin_type'];
         }
+        // print_r($admin_t);
+
 
         if ($data->num_rows() > 0 && $admin_t == 'admin') {
 

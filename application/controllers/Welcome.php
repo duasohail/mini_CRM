@@ -30,8 +30,16 @@ class Welcome extends CI_Controller {
 		$password=$this->input->post('password');
 		$this->load->model('Admin_Model');
 		$data=$this->Admin_Model->adminRegisterModel($email, $password);
-		print_r($data);
+		// print_r($email);
 	}
+
+	public function dashboard(){
+		$this->load->model('Company_Model');
+		$data=$this->Company_Model->get_comp();
+		$this->session->set_userdata('company_all', $data);
+		$this->load->view('dashboard');
+	}
+
 
 
 
@@ -57,6 +65,31 @@ class Welcome extends CI_Controller {
 		$data=$this->Company_Model->companyRegisterModel($comp_name, $email, $logo, $website, $pass);
 	
 	}
+	public function editCompanyView(){
+		$this->load->view('company_Data');
+
+	}
+	public function companyEditData(){
+		$data=$this->input->post();
+		$id=$this->input->post('id');
+		$name=$this->input->post('name');
+		$email=$this->input->post('email');
+		$website=$this->input->post('website');
+		$this->load->model('Company_Model');
+		$this->Company_Model->companyEdit($id, $name, $email, $website);
+		redirect('Welcome/dashboard', 'refresh');
+		// print_r($data);
+
+	}
+	public function deleteComp(){
+		$id=$_GET['id'];
+		$email=$_GET['email'];
+		$this->load->model('Company_Model');
+		$data=$this->Company_Model->deleteCompData($id, $email);
+		redirect('Welcome/dashboard', 'refresh');
+		// print_r($email);
+
+	}
 
 	//emp
 	
@@ -77,12 +110,49 @@ class Welcome extends CI_Controller {
 		$last_name=$this->input->post('last_name');
 		$email=$this->input->post('email');
 		$pass=$this->input->post('pass');
-		$company=$this->input->post('company');
+		$id=$this->input->post('Company');
 		$phone=$this->input->post('phone');
+		// print_r($id);
 		
 		$this->load->model('Emp_Model');
 
-		$data=$this->Emp_Model->empRegisterModel($name, $last_name, $email, $pass , $company, $phone);
+		$data=$this->Emp_Model->empRegisterModel($name, $last_name, $email, $pass , $id, $phone);
 	}
+	public function editEmpView(){
+		$this->load->View('empEdit');
+		
+	}
+	public function empData(){
+		$this->load->model('Emp_Model');
+		$data=$this->Emp_Model->get_emp();
+		$this->session->set_userdata('emp', $data);
+		$this->load->view('emp_data');
+	}
+	
 
+	public function empEdit(){
+		$data=$this->input->post();
+		$emp=$this->input->post('emp_id');
+		$name=$this->input->post('name');
+		$last_name=$this->input->post('last_name');
+		$email=$this->input->post('email');
+		$pass=$this->input->post('pass');
+		$id=$this->input->post('Company');
+		$phone=$this->input->post('phone');
+		$this->load->model('Emp_Model');
+
+		$data=$this->Emp_Model->empEdit($name, $last_name, $email, $pass , $id, $phone, $emp);
+		// $this->load->view('emp_data');
+		redirect('Welcome/empData', 'refresh');
+		// print_r($emp);
+	}
+	public function deleteEmp(){
+		$id=$_GET['id'];
+		$email=$_GET['email'];
+		$this->load->model('Emp_Model');
+		$data=$this->Emp_Model->deleteEmpData($id, $email);
+		redirect('Welcome/empData', 'refresh');
+		
+	}
+	
 }

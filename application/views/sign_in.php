@@ -12,7 +12,7 @@
 	<link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body> 
 	<div class="container-flex d-flex justify-content-center align-items-center main">
 		<div class="row no-gutters formBorder p-1">
 			<div class="col-sm-12 col-lg-12  col-md-12 ">
@@ -30,13 +30,13 @@
 							<p class="text-white text-left bg-success p-1"><?php echo $this->session->flashdata('comp_msg_sucess')?></p>  
 
 						<?php } elseif($this->session->flashdata('emp_msg_sucess')){?>
-							
+
 							<p class="text-white text-left bg-success p-1"><?php echo $this->session->flashdata('emp_msg_sucess')?></p>  
 						<?php } ?>
 						
 
-						<input type="email" class="form-control mb-4 mt-1 sign_in_input" name="email" value="" placeholder="Enter your email">
-						<input type="password" class="form-control mb-4 sign_in_input" name="password" value="" placeholder="Enter your password">
+						<input type="email"  required class="form-control mb-4 mt-1 sign_in_input" name="email" value="" placeholder="Enter your email *">
+						<input type="password" required class="form-control mb-4 sign_in_input" name="password" value="" placeholder="Enter your password *">
 						<button type="submit" class="btn btn-sm btn-danger text-light mb-1 sign_in_button" name="Submit" value="Submit" >SUBMIT</button>
 						<br>
 						<a href="<?php echo site_url('Welcome/registerCompanyView');?>" class="reg text-white">Company |</a>

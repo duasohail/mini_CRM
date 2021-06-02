@@ -16,8 +16,8 @@
 	<div class="container-flex d-flex justify-content-center align-items-center main">
 		<div class="row no-gutters formBorder p-1">
 			<div class="col-sm-12 col-lg-12  col-md-12 ">
-				<h2 class="text-center pt-4 pb-3 text-white">Company Registration</h2>
-				<?php echo form_open('Welcome/companyRegister', 'id="add_class", name="add_class"') ?>
+				<h2 class="text-center pt-4 pb-3 text-white">Company Edit</h2>
+				<?php echo form_open('Welcome/companyEditData', 'id="add_class", name="add_class"') ?>
 					<div class="p-3 text-center">
 						
 						<!-- error message -->
@@ -26,14 +26,21 @@
 							<p class="text-white text-left bg-danger p-1"><?php echo $this->session->flashdata('comp_msg')?></p>  
 								
 						<?php	}?>
-
-						<input type="text" class="form-control mb-4 mt-1 sign_in_input" name="name" required value="" placeholder="Enter your Comapny Name *">
-						<input type="email" class="form-control mb-4 mt-1 sign_in_input" name="email" required value="" placeholder="Enter your email *">
-						<input type="password" class="form-control mb-4 mt-1 sign_in_input" name="pass" required value="" placeholder="Enter your password *">
-						<input type="text" class="form-control mb-3  sign_in_input" name="website" value="" required placeholder="website *">
+                         <?php $companies = $this->session->userdata('company_all'); 
+                         
+                    foreach ($companies as $company) {
+                            // print_r($company);
+                    
+                        if ($_GET['id'] == $company['company_id']) { ?>
+                            
+						<input type="hidden" class="form-control mb-4 mt-1 sign_in_input" name="id" value="<?php echo $company['company_id']?>" placeholder="Enter your Comapny Name">
+						<input type="text" class="form-control mb-4 mt-1 sign_in_input" name="name" value="<?php echo $company['name']?>" placeholder="Enter your Comapny Name">
+						<input type="email" class="form-control mb-4 mt-1 sign_in_input" name="email" value="<?php echo $company['email']?>" placeholder="Enter your email">
+						<input type="text" class="form-control mb-3  sign_in_input" name="website" value="<?php echo $company['website']?>" placeholder="website">
 						<p class="text-white mb-1 text-left">Comapany Logo (minimum 100×100)</p>
 						<input type="file" class="form-control mb-4 pt-2 sign_in_input" name="logo" value="" placeholder="logo">
-						<button type="submit" class="btn btn-sm btn-danger text-light mb-1 sign_in_button" name="Submit" value="Submit" >Company</button><br>
+                        <?php }}?>
+                        <button type="submit" class="btn btn-sm btn-danger text-light mb-1 sign_in_button" name="Submit" value="Submit" >Company</button><br>
 						<a href=" <?php echo site_url('Welcome/');  ?>" class="reg text-white">Sign In</a>
 					</div>
 				<?php form_close(); ?>

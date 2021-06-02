@@ -23,6 +23,23 @@ class Company_Model extends CI_Model
        
       
     }
+
+    public function get_comp(){
+        $data=$this->db->query("SELECT * FROM companies ");
+        return $data->result_array();
+    }
+    public function companyEdit($id, $name, $email, $website){
+        $data=$this->db->query("UPDATE companies SET name='".$name."', email='".$email."', website='".$website."' WHERE company_id='".$id."'");
+        return TRUE;
+    }
+    public function deleteCompData($id, $email){
+        $this->db->query("DELETE FROM companies  WHERE `company_id` =" . $id);
+        $this->db->query("DELETE FROM admin  WHERE email ='".$email."'");
+        return TRUE;
+       
+    }
+
+   
 }
 
 

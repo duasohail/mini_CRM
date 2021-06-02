@@ -29,17 +29,17 @@
 								
 						<?php	}?>
 
-						<input type="text" class="form-control mb-4 mt-1 sign_in_input" name="name" value="" placeholder="Enter your First Name">
-						<input type="text" class="form-control mb-4 mt-1 sign_in_input" name="last_name" value="" placeholder="Enter your Last Name">
-						<input type="email" class="form-control mb-4 mt-1 sign_in_input" name="email" value="" placeholder="Enter your email">
-						<input type="password" class="form-control mb-4 mt-1 sign_in_input" name="pass" value="" placeholder="Enter your password">
-						<select type="text" class="form-control mb-4  sign_in_input" name="Company" value="" >
-                            <option>Select Company</option>
+						<input type="text" class="form-control mb-4 mt-1 sign_in_input" required name="name" value="" placeholder="Enter your First Name *">
+						<input type="text" class="form-control mb-4 mt-1 sign_in_input" required name="last_name" value="" placeholder="Enter your Last Name *">
+						<input type="email" class="form-control mb-4 mt-1 sign_in_input" required name="email" value="" placeholder="Enter your email *">
+						<input type="password" class="form-control mb-4 mt-1 sign_in_input" required name="pass" value="" placeholder="Enter your password *">
+						<select type="text" class="form-control mb-4  sign_in_input" name="Company" value="" required >
+                            <option>Select Company *</option>
 
 							<?php
 							 $companies=$this->session->userdata('companies');
 								foreach( $companies as $company){?>
-									<option value="<?php print_r($company['company_id']); ?>"> <?php print_r($company['name']); ?></option>
+									<option value="<?php print_r($company['company_id'].' | '.$company['name']); ?>"> <?php print_r($company['name']); ?></option>
 									
 								<?php }
 							?>
